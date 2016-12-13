@@ -1,19 +1,16 @@
-FROM alpine:3.2
+FROM alpine:3.4
 
 MAINTAINER Luca Corbo <lu.corbo@gmail.com>
 
-ENV AGLIO_VERSION 2.2.0
+ENV AGLIO_VERSION 2.3.0
 
-RUN apk --update add \
+RUN apk --no-cache add \
   nodejs \
   python \
   make \
   g++
 
 RUN npm install -g aglio@${AGLIO_VERSION}
-
-RUN rm -rf /var/cache/apk/* \
-  && rm -rf /tmp/npm*
 
 VOLUME /data
 
